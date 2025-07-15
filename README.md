@@ -21,19 +21,22 @@
    Удалите разделы 38 и 41 с помощью sgdisk:
    
    /system/bin/sgdisk --delete=38 /dev/block/mmcblk0
+   
    /system/bin/sgdisk --delete=41 /dev/block/mmcblk0
 
 4. Создание новых разделов
    Создайте раздел Super размером 10 ГБ и обновите Userdata:
    
    /system/bin/sgdisk --new=38:0:+10G --typecode=38:8300 --change-name=38:super /dev/block/mmcblk0
+   
    /system/bin/sgdisk --new=41:0:0 --typecode=41:8300 --change-name=41:userdata /dev/block/mmcblk0
 
 6. Сохранение изменений
    Синхронизируйте изменения:
+   
    sync
 
-7. Выход из ADB Shell
+8. Выход из ADB Shell
    Завершите сессию:
    
    exit
