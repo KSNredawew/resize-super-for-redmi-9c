@@ -19,43 +19,44 @@
 
 2. Удаление разделов
    Удалите разделы 38 и 41 с помощью sgdisk:
+   
    /system/bin/sgdisk --delete=38 /dev/block/mmcblk0
    /system/bin/sgdisk --delete=41 /dev/block/mmcblk0
 
-3. Создание новых разделов
+4. Создание новых разделов
    Создайте раздел Super размером 10 ГБ и обновите Userdata:
+   
    /system/bin/sgdisk --new=38:0:+10G --typecode=38:8300 --change-name=38:super /dev/block/mmcblk0
    /system/bin/sgdisk --new=41:0:0 --typecode=41:8300 --change-name=41:userdata /dev/block/mmcblk0
 
-4. Сохранение изменений
+6. Сохранение изменений
    Синхронизируйте изменения:
    sync
 
-5. Выход из ADB Shell
+7. Выход из ADB Shell
    Завершите сессию:
+   
    exit
 
-6. Перезагрузка в рекавери и сброс данных
+9. Перезагрузка в рекавери и сброс данных
    Перезагрузитесь в рекавери и выполните wipe data/factory reset.
 
-7. Переход в Fastbootd
+10. Переход в Fastbootd
    Перезагрузитесь в режим Fastbootd (не обычный Fastboot!):
    adb reboot fastboot
 
-8. Очистка раздела Super
+11. Очистка раздела Super
    Удалите содержимое раздела Super:
    fastboot erase super
 
-9. Прошивка модифицированного образа Super
+12. Прошивка модифицированного образа Super
    Прошейте скачанный образ Super:
    fastboot flash super super.img
 
-10. Установка Bliss ROM
+13. Установка Bliss ROM
     В рекавери установите скачанную прошивку Bliss ROM.
 
-11. Перезагрузка в систему
-    Перезагрузите устройство:
-    fastboot reboot
+14. Перезагрузка в систему
     Если загрузка прошла успешно, всё готово!
 
 ## Устранение неполадок
