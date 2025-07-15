@@ -1,0 +1,1 @@
+# resize-super-for-redmi-9c
